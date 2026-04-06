@@ -6,6 +6,8 @@ public class BannerService {
         Map<Character, String[]> patterns = BannerPattern.getPatterns();
         text = text.toUpperCase();
 
+        String[] lines = new String[5];
+
         for (int row = 0; row < 5; row++) {
             String[] lineParts = new String[text.length()];
 
@@ -18,7 +20,11 @@ public class BannerService {
                 }
             }
 
-            System.out.println(String.join("  ", lineParts));
+            lines[row] = String.join("  ", lineParts);
+        }
+
+        for (String line : lines) {
+            System.out.println(line);
         }
     }
 }
