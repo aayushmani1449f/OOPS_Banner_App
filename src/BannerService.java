@@ -1,48 +1,72 @@
 public class BannerService {
 
-    public void printBanner(String text) {
+    public BannerPattern[] createPatterns() {
 
-        String[] oPattern = getOPattern();
-        String[] pPattern = getPPattern();
-        String[] sPattern = getSPattern();
-
-        for (int i = 0; i < oPattern.length; i++) {
-            System.out.println(
-                    oPattern[i] + "  " +
-                    oPattern[i] + "  " +
-                    pPattern[i] + "  " +
-                    sPattern[i]
-            );
-        }
-    }
-
-    public static String[] getOPattern() {
-        return new String[]{
+        String[] o = {
                 " *** ",
                 "*   *",
                 "*   *",
                 "*   *",
                 " *** "
         };
-    }
-
-    public static String[] getPPattern() {
-        return new String[]{
+                            
+        String[] p = {
                 "**** ",
                 "*   *",
                 "**** ",
                 "*    ",
                 "*    "
         };
-    }
-
-    public static String[] getSPattern() {
-        return new String[]{
+ 
+        String[] s = {
                 " ****",
                 "*    ",
                 " *** ",
                 "    *",
                 "**** "
         };
+
+        String[] space = {
+                "     ", 
+                "     ",
+                "     ",
+                "     ",
+                "     "
+        };
+
+        return new BannerPattern[]{
+                new BannerPattern('O', o),
+                new BannerPattern('P', p),
+                new BannerPattern('S', s),
+                new BannerPattern(' ', space)
+        };
+    }
+
+    public String[] getPattern(char ch, BannerPattern[] patterns) {
+        for (BannerPattern bp : patterns) {
+            if (bp.getCharacter() == ch) {
+                return bp.getPattern();
+            }
+        }
+        return getPattern(' ', patterns);
+    }
+
+    public void printMessage(String message) {
+
+        BannerPattern[] patterns = createPatterns();
+        message = message.toUpperCase();
+
+        int height = patterns[0].getPattern().length;
+
+        for (int i = 0; i < height; i++) {
+            StringBuilder line = new StringBuilder();
+
+            for (char ch : message.toCharArray()) {
+                String[] pattern = getPattern(ch, patterns);
+                line.append(pattern[i]).append("  ");
+            }
+
+            System.out.println(line);
+        }
     }
 }

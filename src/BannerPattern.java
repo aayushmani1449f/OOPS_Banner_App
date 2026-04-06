@@ -1,35 +1,18 @@
-import java.util.HashMap;
-import java.util.Map;
-
 public class BannerPattern {
 
-    public static Map<Character, String[]> getPatterns() {
-        Map<Character, String[]> patterns = new HashMap<>();
+    private char character;
+    private String[] pattern;
 
-        patterns.put('O', new String[] {
-                " *** ",
-                "*   *",
-                "*   *",
-                "*   *",
-                " *** "
-        });
+    public BannerPattern(char character, String[] pattern) {
+        this.character = character;
+        this.pattern = pattern;
+    }
 
-        patterns.put('P', new String[] {
-                "**** ",
-                "*   *",
-                "**** ",
-                "*    ",
-                "*    "
-        });
+    public char getCharacter() {
+        return character;
+    }
 
-        patterns.put('S', new String[] {
-                " ****",
-                "*    ",
-                " *** ",
-                "    *",
-                "**** "
-        });
-
-        return patterns;
+    public String[] getPattern() {
+        return pattern;
     }
 }
