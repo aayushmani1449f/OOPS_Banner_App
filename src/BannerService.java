@@ -1,69 +1,58 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class BannerService {
 
-    public BannerPattern[] createPatterns() {
+    public Map<Character, String[]> createCharacterMap() {
 
-        String[] o = {
-                " *** ",
-                "*   *",
+        Map<Character, String[]> charMap = new HashMap<>();
+
+        charMap.put('O', new String[]{
+          
+
                 "*   *",
                 "*   *",
                 " *** "
-        };
-                            
-        String[] p = {
-                "**** ",
-                "*   *",
+        });
+
+        charMap.put('P', new String[]{
+          
+
                 "**** ",
                 "*    ",
                 "*    "
-        };
- 
-        String[] s = {
+        });
+
+        charMap.put('S', new String[]{
                 " ****",
                 "*    ",
                 " *** ",
                 "    *",
                 "**** "
-        };
+        });
 
-        String[] space = {
+        charMap.put(' ', new String[]{
+                "     ",
+                "     ",
                 "     ", 
                 "     ",
-                "     ",
-                "     ",
                 "     "
-        };
+        });
 
-        return new BannerPattern[]{
-                new BannerPattern('O', o),
-                new BannerPattern('P', p),
-                new BannerPattern('S', s),
-                new BannerPattern(' ', space)
-        };
+        return charMap;
     }
 
-    public String[] getPattern(char ch, BannerPattern[] patterns) {
-        for (BannerPattern bp : patterns) {
-            if (bp.getCharacter() == ch) {
-                return bp.getPattern();
-            }
-        }
-        return getPattern(' ', patterns);
-    }
+    public void displayBanner(String message, Map<Character, String[]> charMap) {
 
-    public void printMessage(String message) {
-
-        BannerPattern[] patterns = createPatterns();
         message = message.toUpperCase();
+        int height = charMap.get('O').length;
 
-        int height = patterns[0].getPattern().length;
-
-        for (int i = 0; i < height; i++) {
+        for (int row = 0; row < height; row++) {
             StringBuilder line = new StringBuilder();
 
             for (char ch : message.toCharArray()) {
-                String[] pattern = getPattern(ch, patterns);
-                line.append(pattern[i]).append("  ");
+                String[] pattern = charMap.getOrDefault(ch, charMap.get(' '));
+                line.append(pattern[row]).append("  ");
             }
 
             System.out.println(line);

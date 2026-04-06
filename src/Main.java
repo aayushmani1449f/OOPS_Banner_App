@@ -1,6 +1,9 @@
+import java.util.Map;
+
 public class Main {
     public static void main(String[] args) {
         BannerService service = new BannerService();
-        service.printBanner("OOPS");
+        Map<Character, String[]> map = service.createCharacterMap();
+        service.displayBanner("OOPS", map);
     }
 }
