@@ -7,23 +7,21 @@ public class BannerService {
 
         Map<Character, String[]> charMap = new HashMap<>();
 
-        charMap.put('O', new String[]{
-          
+        charMap.put('O', new String[] {
 
                 "*   *",
                 "*   *",
                 " *** "
         });
 
-        charMap.put('P', new String[]{
-          
+        charMap.put('P', new String[] {
 
                 "**** ",
                 "*    ",
                 "*    "
         });
 
-        charMap.put('S', new String[]{
+        charMap.put('S', new String[] {
                 " ****",
                 "*    ",
                 " *** ",
@@ -31,10 +29,10 @@ public class BannerService {
                 "**** "
         });
 
-        charMap.put(' ', new String[]{
+        charMap.put(' ', new String[] {
                 "     ",
                 "     ",
-                "     ", 
+                "     ",
                 "     ",
                 "     "
         });
