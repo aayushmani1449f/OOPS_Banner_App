@@ -4,16 +4,21 @@ public class BannerService {
 
     public void printBanner(String text) {
         Map<Character, String[]> patterns = BannerPattern.getPatterns();
-
         text = text.toUpperCase();
 
         for (int row = 0; row < 5; row++) {
-            for (char ch : text.toCharArray()) {
+            String[] lineParts = new String[text.length()];
+
+            for (int i = 0; i < text.length(); i++) {
+                char ch = text.charAt(i);
                 if (patterns.containsKey(ch)) {
-                    System.out.print(patterns.get(ch)[row] + "  ");
+                    lineParts[i] = patterns.get(ch)[row];
+                } else {
+                    lineParts[i] = "     ";
                 }
             }
-            System.out.println();
+
+            System.out.println(String.join("  ", lineParts));
         }
     }
 }
