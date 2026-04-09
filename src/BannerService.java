@@ -8,14 +8,16 @@ public class BannerService {
         Map<Character, String[]> charMap = new HashMap<>();
 
         charMap.put('O', new String[] {
-
+                " *** ",
+                "*   *",
                 "*   *",
                 "*   *",
                 " *** "
         });
 
         charMap.put('P', new String[] {
-
+                "**** ",
+                "*   *",
                 "**** ",
                 "*    ",
                 "*    "
